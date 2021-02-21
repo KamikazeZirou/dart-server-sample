@@ -1,8 +1,27 @@
 version: "3.4"
 services:
+  db:
+    container_name: todo_db
+    image: mysql:5.7
+    tty: true
+    command:
+      - --general-log=true
+      - --general-log-file=/var/tmp/general.log
+    ports:
+      - "33306:3306"
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_USER: "root"
+      MYSQL_ROOT_PASSWORD: "password"
   todo_server:
     container_name: todo_server
     build:
       context: .
     ports:
       - "50051:5001"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: "db"
+      DB_PORT: "3306"
