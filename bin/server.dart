@@ -1,6 +1,4 @@
 import 'package:grpc/grpc.dart';
-import 'package:todo/src/generated/todo.pb.dart';
-import 'package:todo/src/generated/todo.pbgrpc.dart';
 import 'package:todo/src/handler/task_service_handler.dart';
 
 void main(List<String> arguments) async {
@@ -9,5 +7,5 @@ void main(List<String> arguments) async {
     const <Interceptor>[],
     CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
   );
-  await server.serve(port: 50051);
+  await server.serve(port: 5001);
 }

@@ -1,0 +1,8 @@
+version: "3.4"
+services:
+  todo_server:
+    container_name: todo_server
+    build:
+      context: .
+    ports:
+      - "50051:5001"
