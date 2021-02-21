@@ -4,8 +4,8 @@ import 'package:todo/src/generated/todo.pbgrpc.dart';
 
 class TaskService extends TaskServiceBase {
   var tasks = <Task>[
-    Task(id: 1, title: "task1", description: "desc1"),
-    Task(id: 2, title: "task2", description: "desc2"),
+    Task(id: 1, title: 'task1', description: 'desc1'),
+    Task(id: 2, title: 'task2', description: 'desc2'),
   ];
 
   @override
