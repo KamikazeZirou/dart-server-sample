@@ -14,7 +14,7 @@ class TaskRepository {
   Future init() async {
     var envVars = Platform.environment;
 
-    var port = 3306;
+    var port = 33306;
     if (envVars['DB_PORT'] != null) {
       port = int.parse(envVars['DB_PORT']);
     }
