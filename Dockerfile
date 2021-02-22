@@ -6,7 +6,9 @@ ADD . /app
 RUN pub get --offline
 RUN dart compile exe bin/server.dart -o bin/server
 
-FROM subfuzion/dart:slim
+# glibc入りalpineを使う。
+# dartの実行バイナリがglibcに依存している。
+FROM frolvlad/alpine-glibc:latest
 WORKDIR /app
 COPY --from=builder /app/bin/server .
 CMD []
