@@ -1,11 +1,13 @@
-FROM google/dart:2.12-beta
-
+FROM google/dart:2.12-beta as builder
 WORKDIR /app
-
 ADD pubspec.* /app/
 RUN pub get
 ADD . /app
 RUN pub get --offline
+RUN dart compile exe bin/server.dart -o bin/server
 
+FROM subfuzion/dart:slim
+WORKDIR /app
+COPY --from=builder /app/bin/server .
 CMD []
-ENTRYPOINT ["/usr/bin/dart", "bin/server.dart"]
+ENTRYPOINT ["./server"]
