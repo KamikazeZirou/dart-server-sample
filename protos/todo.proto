@@ -16,31 +16,31 @@ syntax = "proto3";
 
 package todo;
 
-service TaskService {
-  rpc ListTask (ListTasksRequest) returns (ListTasksResponse) {}
-  rpc CreateTask (CreateTaskRequest) returns (CreateTaskResponse) {}
+service TodoService {
+  rpc ListTodo (ListTodoRequest) returns (ListTodoResponse) {}
+  rpc CreateTodo (CreateTodoRequest) returns (CreateTodoResponse) {}
 }
 
-message Task {
+message Todo {
   int32 id = 1;
   string title = 2;
   string description = 3;
 }
 
-message ListTasksRequest {
+message ListTodoRequest {
   // ページングパラメータや検索はなし。
 }
 
-message ListTasksResponse {
-  repeated Task tasks = 1;
+message ListTodoResponse {
+  repeated Todo todoList = 1;
 }
 
-message CreateTaskRequest {
-  // 作成するTask
-  Task task = 1;
+message CreateTodoRequest {
+  // 作成するTodo
+  Todo todo = 1;
 }
 
-message CreateTaskResponse {
-  // 作成したTask
-  Task task = 1;
+message CreateTodoResponse {
+  // 作成したTodo
+  Todo todo = 1;
 }

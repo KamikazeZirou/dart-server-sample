@@ -1,7 +1,7 @@
-import 'package:todo/src/domain/task.dart';
+import 'package:todo/src/domain/todo.dart';
 
-abstract class TaskRepository {
-  Future<Task> createTask(Task task);
+abstract class TodoRepository {
+  Future<Todo> create(Todo todo);
 
-  Future<List<Task>> listTask();
+  Future<List<Todo>> list();
 }

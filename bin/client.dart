@@ -12,38 +12,38 @@ Future<void> main(List<String> args) async {
           CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
     ),
   );
-  final stub = TaskServiceClient(channel);
+  final stub = TodoServiceClient(channel);
 
   // 登録済みのタスク一覧を取得
   try {
-    final response = await stub.listTask(
-      ListTasksRequest(),
+    final response = await stub.listTodo(
+      ListTodoRequest(),
       options: CallOptions(compression: const GzipCodec()),
     );
-    print('tasks: ${response.tasks}');
+    print('todos: ${response.todoList}');
   } catch (e) {
     print('Caught error: $e');
   }
 
   // タスクを登録
   try {
-    final response = await stub.createTask(
-      CreateTaskRequest(
-          task: Task(title: 'title3', description: 'description3')),
+    final response = await stub.createTodo(
+      CreateTodoRequest(
+          todo: Todo(title: 'title3', description: 'description3')),
       options: CallOptions(compression: const GzipCodec()),
     );
-    print('created task: ${response.task}');
+    print('created todo: ${response.todo}');
   } catch (e) {
     print('Caught error: $e');
   }
 
   // タスク一覧を取得して、タスク登録ができているか確認する。
   try {
-    final response = await stub.listTask(
-      ListTasksRequest(),
+    final response = await stub.listTodo(
+      ListTodoRequest(),
       options: CallOptions(compression: const GzipCodec()),
     );
-    print('tasks: ${response.tasks}');
+    print('todos: ${response.todoList}');
   } catch (e) {
     print('Caught error: $e');
   }

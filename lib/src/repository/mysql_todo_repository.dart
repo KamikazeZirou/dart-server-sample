@@ -1,34 +1,31 @@
 
 import 'package:mysql1/mysql1.dart';
-import 'package:todo/src/domain/task.dart';
+import 'package:todo/src/domain/todo.dart';
 import 'package:todo/src/interfaces/repository.dart';
 
-class TaskRepositoryImpl implements TaskRepository {
-  var tasks = <Task>[
-    Task(id: 1, title: 'task1', description: 'desc1'),
-    Task(id: 2, title: 'task2', description: 'desc2'),
-  ];
-
+class MySQLTodoRepository implements TodoRepository {
   final MySqlConnection _conn;
 
-  TaskRepositoryImpl(this._conn);
+  MySQLTodoRepository(this._conn);
 
-  Future<Task> createTask(Task task) async {
+  @override
+  Future<Todo> create(Todo todo) async {
     var result = await _conn.query(
         'insert into tasks (title, description) values (?, ?)',
-        [task.title, task.description]);
-    return Task(
+        [todo.title, todo.description]);
+    return Todo(
       id: result.insertId,
-      title: task.title,
-      description: task.description,
+      title: todo.title,
+      description: todo.description,
     );
   }
 
-  Future<List<Task>> listTask() async {
+  @override
+  Future<List<Todo>> list() async {
     var cursor = await _conn.query('select id, title, description from tasks');
 
     var tasks = cursor
-        .map((row) => Task(
+        .map((row) => Todo(
               id: row['id'],
               title: row['title'].toString(),
               description: row['description'].toString(),

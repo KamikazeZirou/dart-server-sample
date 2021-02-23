@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:mysql1/mysql1.dart';
 import 'package:riverpod/riverpod.dart';
-import 'package:todo/src/handler/task_service_handler.dart';
+import 'package:todo/src/handler/todo_service_handler.dart';
 import 'package:todo/src/interfaces/repository.dart';
 import 'package:todo/src/interfaces/service.dart';
-import 'package:todo/src/repository/task_repository.dart';
-import 'package:todo/src/service/task_service.dart';
+import 'package:todo/src/repository/mysql_todo_repository.dart';
+import 'package:todo/src/service/todo_service.dart';
 
 // ignore: top_level_function_literal_block
 final connectionProvider = Provider.autoDispose((ref) async {
@@ -30,13 +30,13 @@ final connectionProvider = Provider.autoDispose((ref) async {
   return connection;
 });
 
-final taskRepositoryProvider = Provider.autoDispose((ref) =>
-    ref.watch(connectionProvider).then((conn) => TaskRepositoryImpl(conn)));
+final todoRepositoryProvider = Provider.autoDispose((ref) =>
+    ref.watch(connectionProvider).then((conn) => MySQLTodoRepository(conn)));
 
-final taskServiceProvider = Provider.autoDispose((ref) => ref
-    .watch(taskRepositoryProvider)
-    .then((repository) => TaskServiceImpl(repository)));
+final todoServiceProvider = Provider.autoDispose((ref) => ref
+    .watch(todoRepositoryProvider)
+    .then((repository) => TodoServiceImpl(repository)));
 
-final taskServiceHandlerProvider = Provider.autoDispose((ref) => ref
-    .watch(taskServiceProvider)
-    .then((service) => TaskServiceHandler(service)));
+final todoServiceHandlerProvider = Provider.autoDispose((ref) => ref
+    .watch(todoServiceProvider)
+    .then((service) => TodoServiceHandler(service)));

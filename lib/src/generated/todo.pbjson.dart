@@ -8,9 +8,9 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use taskDescriptor instead')
-const Task$json = const {
-  '1': 'Task',
+@$core.Deprecated('Use todoDescriptor instead')
+const Todo$json = const {
+  '1': 'Todo',
   '2': const [
     const {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
     const {'1': 'title', '3': 2, '4': 1, '5': 9, '10': 'title'},
@@ -18,42 +18,42 @@ const Task$json = const {
   ],
 };
 
-/// Descriptor for `Task`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List taskDescriptor = $convert.base64Decode('CgRUYXNrEg4KAmlkGAEgASgFUgJpZBIUCgV0aXRsZRgCIAEoCVIFdGl0bGUSIAoLZGVzY3JpcHRpb24YAyABKAlSC2Rlc2NyaXB0aW9u');
-@$core.Deprecated('Use listTasksRequestDescriptor instead')
-const ListTasksRequest$json = const {
-  '1': 'ListTasksRequest',
+/// Descriptor for `Todo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List todoDescriptor = $convert.base64Decode('CgRUb2RvEg4KAmlkGAEgASgFUgJpZBIUCgV0aXRsZRgCIAEoCVIFdGl0bGUSIAoLZGVzY3JpcHRpb24YAyABKAlSC2Rlc2NyaXB0aW9u');
+@$core.Deprecated('Use listTodoRequestDescriptor instead')
+const ListTodoRequest$json = const {
+  '1': 'ListTodoRequest',
 };
 
-/// Descriptor for `ListTasksRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List listTasksRequestDescriptor = $convert.base64Decode('ChBMaXN0VGFza3NSZXF1ZXN0');
-@$core.Deprecated('Use listTasksResponseDescriptor instead')
-const ListTasksResponse$json = const {
-  '1': 'ListTasksResponse',
+/// Descriptor for `ListTodoRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listTodoRequestDescriptor = $convert.base64Decode('Cg9MaXN0VG9kb1JlcXVlc3Q=');
+@$core.Deprecated('Use listTodoResponseDescriptor instead')
+const ListTodoResponse$json = const {
+  '1': 'ListTodoResponse',
   '2': const [
-    const {'1': 'tasks', '3': 1, '4': 3, '5': 11, '6': '.todo.Task', '10': 'tasks'},
+    const {'1': 'todoList', '3': 1, '4': 3, '5': 11, '6': '.todo.Todo', '10': 'todoList'},
   ],
 };
 
-/// Descriptor for `ListTasksResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List listTasksResponseDescriptor = $convert.base64Decode('ChFMaXN0VGFza3NSZXNwb25zZRIgCgV0YXNrcxgBIAMoCzIKLnRvZG8uVGFza1IFdGFza3M=');
-@$core.Deprecated('Use createTaskRequestDescriptor instead')
-const CreateTaskRequest$json = const {
-  '1': 'CreateTaskRequest',
+/// Descriptor for `ListTodoResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List listTodoResponseDescriptor = $convert.base64Decode('ChBMaXN0VG9kb1Jlc3BvbnNlEiYKCHRvZG9MaXN0GAEgAygLMgoudG9kby5Ub2RvUgh0b2RvTGlzdA==');
+@$core.Deprecated('Use createTodoRequestDescriptor instead')
+const CreateTodoRequest$json = const {
+  '1': 'CreateTodoRequest',
   '2': const [
-    const {'1': 'task', '3': 1, '4': 1, '5': 11, '6': '.todo.Task', '10': 'task'},
+    const {'1': 'todo', '3': 1, '4': 1, '5': 11, '6': '.todo.Todo', '10': 'todo'},
   ],
 };
 
-/// Descriptor for `CreateTaskRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createTaskRequestDescriptor = $convert.base64Decode('ChFDcmVhdGVUYXNrUmVxdWVzdBIeCgR0YXNrGAEgASgLMgoudG9kby5UYXNrUgR0YXNr');
-@$core.Deprecated('Use createTaskResponseDescriptor instead')
-const CreateTaskResponse$json = const {
-  '1': 'CreateTaskResponse',
+/// Descriptor for `CreateTodoRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createTodoRequestDescriptor = $convert.base64Decode('ChFDcmVhdGVUb2RvUmVxdWVzdBIeCgR0b2RvGAEgASgLMgoudG9kby5Ub2RvUgR0b2Rv');
+@$core.Deprecated('Use createTodoResponseDescriptor instead')
+const CreateTodoResponse$json = const {
+  '1': 'CreateTodoResponse',
   '2': const [
-    const {'1': 'task', '3': 1, '4': 1, '5': 11, '6': '.todo.Task', '10': 'task'},
+    const {'1': 'todo', '3': 1, '4': 1, '5': 11, '6': '.todo.Todo', '10': 'todo'},
   ],
 };
 
-/// Descriptor for `CreateTaskResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createTaskResponseDescriptor = $convert.base64Decode('ChJDcmVhdGVUYXNrUmVzcG9uc2USHgoEdGFzaxgBIAEoCzIKLnRvZG8uVGFza1IEdGFzaw==');
+/// Descriptor for `CreateTodoResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createTodoResponseDescriptor = $convert.base64Decode('ChJDcmVhdGVUb2RvUmVzcG9uc2USHgoEdG9kbxgBIAEoCzIKLnRvZG8uVG9kb1IEdG9kbw==');
