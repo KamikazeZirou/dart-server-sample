@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:grpc/grpc.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:todo/src/di/di.dart';
@@ -14,5 +16,16 @@ void main(List<String> arguments) async {
   );
   await server.serve(port: 5001);
 
-  listener.close();
+  final shutdown = (ProcessSignal event) async {
+    stdout.write('\nStopping server ... ');
+    await server.shutdown();
+    listener.close();
+    return Future.delayed(Duration(seconds: 10)).then((value) {
+      stdout.write('done\n');
+      exit(1);
+    });
+  };
+
+  ProcessSignal.sigint.watch().listen(shutdown);
+  ProcessSignal.sigterm.watch().listen(shutdown);
 }

@@ -25,7 +25,9 @@ final connectionProvider = Provider.autoDispose((ref) async {
       db: 'todo_db');
 
   final connection = await MySqlConnection.connect(settings);
-  ref.onDispose(() => connection.close());
+  ref.onDispose(() {
+    connection.close();
+  });
 
   return connection;
 });

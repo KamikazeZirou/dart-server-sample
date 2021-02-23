@@ -5,7 +5,7 @@ import 'package:todo/src/generated/todo.pbgrpc.dart';
 Future<void> main(List<String> args) async {
   final channel = ClientChannel(
     'localhost',
-    port: 5001,
+    port: 50051,
     options: ChannelOptions(
       credentials: ChannelCredentials.insecure(),
       codecRegistry:

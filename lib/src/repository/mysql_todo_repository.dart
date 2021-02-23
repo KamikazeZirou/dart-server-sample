@@ -11,7 +11,7 @@ class MySQLTodoRepository implements TodoRepository {
   @override
   Future<Todo> create(Todo todo) async {
     var result = await _conn.query(
-        'insert into tasks (title, description) values (?, ?)',
+        'insert into todo (title, description) values (?, ?)',
         [todo.title, todo.description]);
     return Todo(
       id: result.insertId,
@@ -22,9 +22,9 @@ class MySQLTodoRepository implements TodoRepository {
 
   @override
   Future<List<Todo>> list() async {
-    var cursor = await _conn.query('select id, title, description from tasks');
+    var cursor = await _conn.query('select id, title, description from todo');
 
-    var tasks = cursor
+    var todoList = cursor
         .map((row) => Todo(
               id: row['id'],
               title: row['title'].toString(),
@@ -32,6 +32,6 @@ class MySQLTodoRepository implements TodoRepository {
             ))
         .toList();
 
-    return tasks;
+    return todoList;
   }
 }
