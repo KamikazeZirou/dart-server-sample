@@ -6,9 +6,9 @@ ADD . /app
 RUN pub get --offline
 RUN dart compile exe bin/server.dart -o bin/server
 
-# glibc入りalpineを使う。
-# dartの実行バイナリがglibcに依存している。
-FROM frolvlad/alpine-glibc:latest
+# alpineにしたいところだが、isinfとsbrkのシンボルが見つからない問題あり。
+# FROM frolvlad/alpine-glibc:latest
+FROM subfuzion/dart:slim
 WORKDIR /app
 COPY --from=builder /app/bin/server .
 CMD []
