@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:mysql1/mysql1.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:todo/src/handler/todo_service_handler.dart';
-import 'package:todo/src/interfaces/repository.dart';
-import 'package:todo/src/interfaces/service.dart';
 import 'package:todo/src/repository/mysql_todo_repository.dart';
 import 'package:todo/src/service/todo_service.dart';
 
