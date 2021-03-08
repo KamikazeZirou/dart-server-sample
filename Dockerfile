@@ -6,7 +6,7 @@ ADD . /app
 RUN pub get --offline
 RUN dart compile exe bin/server.dart -o bin/server
 
-FROM gcr.io/distroless/base
+FROM gcr.io/distroless/base:debug
 WORKDIR /app
 COPY --from=builder /app/bin/server .
 CMD []
