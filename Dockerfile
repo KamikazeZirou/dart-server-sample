@@ -1,4 +1,4 @@
-FROM google/dart:2.12-beta as builder
+FROM google/dart:2.12 as builder
 WORKDIR /app
 ADD pubspec.* /app/
 RUN pub get
@@ -9,5 +9,6 @@ RUN dart compile exe bin/server.dart -o bin/server
 FROM gcr.io/distroless/base:debug
 WORKDIR /app
 COPY --from=builder /app/bin/server .
+COPY --from=builder /usr/bin/ldd .
 CMD []
 ENTRYPOINT ["./server"]
