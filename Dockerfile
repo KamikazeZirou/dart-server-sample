@@ -6,9 +6,7 @@ ADD . /app
 RUN pub get --offline
 RUN dart compile exe bin/server.dart -o bin/server
 
-# alpineにしたいところだが、isinfとsbrkのシンボルが見つからない問題あり。
-# FROM frolvlad/alpine-glibc:latest
-FROM subfuzion/dart:slim
+FROM gcr.io/distroless/base
 WORKDIR /app
 COPY --from=builder /app/bin/server .
 CMD []
